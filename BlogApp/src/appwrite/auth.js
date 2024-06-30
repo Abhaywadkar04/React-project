@@ -4,7 +4,7 @@ import { Client, Account, ID } from "appwrite";
 
 export class AuthService{
     Client=new Client();
-    Account=new Account();
+    Account;
 
     constructor(){
         this.Client
@@ -38,8 +38,30 @@ export class AuthService{
         catch(error){}
     }
 
-}
+    async getCurrentUser() {
+        try {
+            
+            return await this.Account.get();;
+        } catch (error) {
+            console.error("Error getting current user:", error);
+            
+        }
+        return null;
 
+    }
+
+    async logout(){
+        try{
+            await this.Account.deleteSessions();
+        }
+        catch(error){
+            console.log("error")
+
+        }
+    }
+
+
+}
 const authService=new AuthService();
 
 
