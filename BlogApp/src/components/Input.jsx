@@ -1,4 +1,5 @@
 import React, {useId} from 'react'
+import Select from './Select'
 
 const Input = React.forwardRef( function Input({
     label,
@@ -26,4 +27,4 @@ const Input = React.forwardRef( function Input({
     )
 })
 
-export default Input
+export default React.forwardRef(Select)
